@@ -42,7 +42,7 @@ export const generateMessage = (name: string, sellingPoints: iSellingPoint[], to
       <td align="center" style="padding: 20px">
         <h1 style="color: #3BAF0B">Вітаємо, ${name}!</h1>
         <p style="color: #262626">
-          Ви на крок ближче до участі в BEST::Hackath0n'8 в ролі партнера!
+          Ви на крок ближче до участі в BEST::Hackath0n2024 в ролі партнера!
         </p>
       </td>
     </tr>
@@ -114,7 +114,7 @@ export const generateMessage = (name: string, sellingPoints: iSellingPoint[], to
             font-weight: 600;
           "
         >
-          До зустрічі на Hackath0n'8!
+          До зустрічі на Hackath0n2024!
         </p>
       </td>
     </tr>
