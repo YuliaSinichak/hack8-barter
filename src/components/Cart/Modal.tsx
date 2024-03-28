@@ -20,6 +20,7 @@ const Modal = ({ handleModal }: ModalProps) => {
   return (
     <AnimatePresence>
       {showModal && (
+        
         <Dialog.Content className="fixed top-1/2 left-1/2 box-border overflow-y-scroll max-h-[80vh] w-[85vw] z-50 translate-x-[-50%] translate-y-[-50%] focus:outline-none">
           <motion.div
             initial={{ opacity: 0 }}
