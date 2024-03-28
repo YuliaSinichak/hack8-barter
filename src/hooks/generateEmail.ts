@@ -1,6 +1,6 @@
 import { iSellingPoint} from '@/types';
 
-export const generateMessage = (name: string, sellingPoints: iSellingPoint[], optionalPoints: iOptional[], activeOptionsPriceSum: number, selligPointsPriceSum: number, totalSum: number, isDiscount: boolean): string => ` <!DOCTYPE html>
+export const generateMessage = (name: string, sellingPoints: iSellingPoint[], totalSum: number): string => ` <!DOCTYPE html>
 <table
     cellpadding="0"
     cellspacing="0"
