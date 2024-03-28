@@ -16,11 +16,10 @@ import { toggleOptionActive } from "@/redux/optionalSlice";
 import { toggleSponsorship } from "@/redux/sponsorshipSlice";
 
 const validationSchema = Yup.object({
-  company_name: Yup.string().required("Required"),
-  company_email: Yup.string()
-    .email("Invalid email address")
-    .required("Required"),
+  company_name: Yup.string().required('Required'),
+  company_email: Yup.string().email('Invalid email address').required('Required'),
 });
+
 
 const SP = ({ name, price }: iSellingPoint) => {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ const SP = ({ name, price }: iSellingPoint) => {
         <span className={`${inter.className} text-3xl`}>{name}</span>
         <div className="flex gap-2">
           <span className={`${press_start.className} text-hack-green text-xl`}>
-            ${price}
+            {price} грн
           </span>
 
           <Image
@@ -65,7 +64,7 @@ const OPT = ({ name, price }: iOptional) => {
         <span className={`${inter.className} text-xl flex-1`}>{name}</span>
         <div className="flex gap-2 items-start">
           <span className={`${press_start.className} text-hack-green text-xl`}>
-            ${price}
+            {price}
           </span>
 
           <Image
@@ -84,78 +83,50 @@ const OPT = ({ name, price }: iOptional) => {
 
 export default function Cart() {
   const sellingPoints = useSelector((state: RootState) => state.sponsorship);
-  const optionalPoints = useSelector(
-    (state: RootState) => state.optionalPackets
-  );
+  const optionalPoints = useSelector((state: RootState) => state.optionalPackets);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const activeSellingPoints = sellingPoints.filter((item) => item.active);
-  const activeOptionalPoints = optionalPoints.filter((item) => item.active);
+  const activeSellingPoints = sellingPoints.filter(item => item.active);
 
-  const selligPointsPriceSum = activeSellingPoints.reduce(
-    (acc, item) => acc + item.price,
-    0
-  );
+  const totalSum = sellingPoints.find(item => item.active)?.price;
 
-  const activeOptionsPriceSum = activeOptionalPoints.reduce(
-    (acc, item) => acc + item.price,
-    0
-  );
-
-  const isDiscount = ( activeSellingPoints.length == 2 || activeSellingPoints.length == 3 || activeOptionalPoints.length == 4)
-  const totalSum =
-    (activeSellingPoints.length == 3 ) ? selligPointsPriceSum + activeOptionsPriceSum - 150 : (activeSellingPoints.length == 2 || activeOptionalPoints.length == 4) ? selligPointsPriceSum + activeOptionsPriceSum - 50: selligPointsPriceSum + activeOptionsPriceSum ;
-    
 
   const handleForm = (result: any) => {
-    console.log({
-      activeSellingPoints,
-      activeOptionalPOints: activeOptionalPoints,
-      totalSum,
-      ...result,
-    });
 
-    const serviceId: string = process?.env?.NEXT_PUBLIC_SERVICE_ID || "";
-    const templateId: string = process?.env?.NEXT_PUBLIC_TEMPLATE_ID || "";
-    const publicKey: string = process?.env?.NEXT_PUBLIC_PUBLIC_KEY || "";
+      const serviceId: string = process?.env?.NEXT_PUBLIC_SERVICE_ID || '';
+      const templateId: string = process?.env?.NEXT_PUBLIC_TEMPLATE_ID || '';
+      const publicKey: string = process?.env?.NEXT_PUBLIC_PUBLIC_KEY || '';
 
-    const stringEmail = generateMessage(
-      result.company_name,
-      activeSellingPoints,
-      activeOptionalPoints,
-      activeOptionsPriceSum,
-      selligPointsPriceSum,
-      totalSum,
-      isDiscount
-    );
 
-    const templateParams = {
-      company_email: result.company_email,
-      message: stringEmail,
-    };
+      const stringEmail = generateMessage(result.company_name, activeSellingPoints, totalSum as any)
 
-    emailjs.send(serviceId, templateId, templateParams, publicKey).then(
-      (result) => {
-        console.log(result.text);
-      },
-      (error) => {
-        console.log(error.text);
+      const templateParams = {
+          company_email: result.company_email,
+          message: stringEmail
+
       }
-    );
+
+      emailjs.send(serviceId, templateId, templateParams, publicKey)
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
   };
 
   const formik = useFormik({
-    initialValues: {
-      company_name: "",
-      company_email: "",
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values, { resetForm }) => {
-      handleForm(values);
-      resetForm();
-    },
+      initialValues: {
+          company_name: '',
+          company_email: '',
+      },
+      validationSchema: validationSchema,
+      onSubmit: (values, { resetForm }) => {
+          handleForm(values);
+          resetForm();
+      },
   });
+
 
   return (
     <section className=" relative grid items-center justify-center w-full gap-8 p-8 my-10 lg:mx-24 self-center">
@@ -196,7 +167,6 @@ export default function Cart() {
                 onClick={() => inputRef.current?.focus()}
                 className={`${press_start.className} text-hack-green text-xl md:text-3xl rounded-2xl w-fit py-2 md:self-start self-center`}
               >
-                = ${totalSum}
               </button>
             </div>
             <div className="">
@@ -236,14 +206,6 @@ export default function Cart() {
               </button>
             </div>
           </form>
-          <div className="flex flex-col relative z-20 justify-center items-center text-left ">
-            <p className={`${inter.className} text-sm md:text-lg text-gray-300`}>Партнерам попередніх проєктів <span className="text-hack-green">-5%</span></p>
-            <div className="grid grid-col text-sm md:text-lg text-gray-300">
-                <p className={`${inter.className}`}>Базовий + 4 додаткові опції <span className="text-hack-green">-50$</span></p>
-                <p className={`${inter.className}`}>Базовий + один пакет <span className="text-hack-green">-50$</span></p>
-                <p className={`${inter.className}`}>Базовий + два пакети <span className="text-hack-green">-150$</span></p>
-            </div>
-            </div>
         </div>
       </div>
       </div>

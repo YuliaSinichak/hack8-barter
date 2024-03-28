@@ -1,16 +1,10 @@
 export interface iSellingPoint {
   compulsory: boolean;
-  name: "Basic" | "Preceptor" | "AdVantage" | "LEGO";
+  name: "Пакет 1" | "Пакет 2" | "Пакет 3";
   active: boolean;
-  price: number;
+  price: string;
   annotation: string;
   services: string[];
-}
-
-export interface iLego {
-  name: string;
-  active: boolean;
-  id: number;
 }
 
 export interface iOptional {

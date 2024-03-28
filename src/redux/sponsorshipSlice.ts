@@ -6,58 +6,43 @@ const sellingPoints: iSellingPoint[] = [
     {
         compulsory: true,
         active: true,
-        name: 'Basic',
-        price: 300,
+        name: 'Пакет 1',
+        price: 'до 2000',
         annotation: '',
         services: [
-            `Логотип компанії на бренд-волл та на сайті проєкту`,
-            `Промоція в соціальних мережах (інформація про компанію)`,
-            `Логотип та згадка про компанію у постпроєктному відео`,
-            `Участь у нетворкінгу`
+            `Промоція в Instagram story`,
+            `Згадка про компанію в постпроєктному відео`,
+            `Розміщення банеру на місці події`,
         ]
     },
     {
-        compulsory: false,
+        compulsory: true,
         active: false,
-        name: 'Preceptor',
-        price: 700,
-        annotation: "4 залишилось",
+        name: 'Пакет 2',
+        price: '2000-8000',
+        annotation: "",
         services: [
-            'Можливість залучення судді та/або ментора до змагань',
-            `Можливість провести воркшоп або тренінг серед учасників`,
-            `Логотип на футболках усіх учасників та організаторів`,
-            `Пост про компанію в Instagram`,
+            'Лого на бренд-воллі',
+            `Промоція в Instagram-story`,
+            `Згадка в постпроєктному відео`,
+            `Транслювання відеоролика на місці події`,
+            `Розміщення банеру на місці події`,
         ]
     },
     {
-        compulsory: false,
+        compulsory: true,
         active: false,
-        name: 'AdVantage',
-        price: 300,
-        annotation: '4 залишилось',
+        name: 'Пакет 3',
+        price: '8000+',
+        annotation: '',
         services: [
-            `World cafe`,
-            `Інтерактивні Instagram story`,
-            `Логотип на плакатах`,
-            `Гра «Treasure hunt»`,
-        ]
-    },
-    {
-        compulsory: false,
-        active: false,
-        name: 'LEGO',
-        price: 500,
-        annotation: 'Ви можете обрати будь-які 4 опції з 9 можливих',
-        services: [
-            `World cafe`,
-            `Гра «Treasure hunt»`,
-            `Можливість залучення ментора та/або судді`,
-            `Пост про компанію в Instagram`,
-            `Розсилка вакансій у Telegram боті`,
-            `Розміщення банера компаній під час хакатону`,
-            `Доступ до бази CV учасників`,
-            `Номінація від компанії`,
-            `Участь у креативній загадці «Define solution»`
+            'Лого на бренд-воллі',
+            `Інтерактивні Instagram stories`,
+            `Згадка в постпроєктному відео`,
+            `Транслювання відеоролика на місці події`,
+            `Розміщення банеру на місці події`,
+            `Пост-дайджест у тґ`,
+            `Участь у нетворкінгу`,
         ]
     },
 ]
@@ -73,8 +58,11 @@ const sponsorshipSlice = createSlice({
             const { name } = action.payload;
             const sponsorship = state.find(sp => sp.name === name);
 
-            if (sponsorship && !sponsorship.compulsory) {
-                sponsorship.active = !sponsorship.active;
+            // Disable all sponsorships
+            state.forEach(sp => sp.active = false);
+
+            if (sponsorship) {
+                sponsorship.active = true;
             }
         },
     },
