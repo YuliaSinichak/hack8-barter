@@ -83,7 +83,7 @@ const explanation: {
         "Під час проведення змагань, буде розміщений банер Вашої компанії. Банер надається компанією.",
     },
     {
-      heading: "Пост-дайджест у Telegram",
+      heading: "Пост-дайджест у Telegram-каналі",
       details:
         " ",
     },
@@ -149,11 +149,11 @@ const Card = ({
             </li>
           ))}
         </div>
-        <div className="flex flex-row-reverse justify-center items-center md:gap-4 gap-1 z-20">
+        <div className="flex flex-row justify-center items-center gap-1 z-20">
           <button
             className={`${press_start.className} ${
               compulsory ? "cursor-auto" : "cursor-auto"
-            } text-md md:text-md bg-black rounded-xl border-2 w-fit border-hack-green text-hack-green px-4 lg:px-6 py-2 self-center ml-5`}
+            } text-md md:text-md bg-black rounded-xl border-2 w-fit border-hack-green text-hack-green px-4 lg:px-6 py-2 self-center`}
           >{`${price} грн`}</button>
         </div>
       </div>
