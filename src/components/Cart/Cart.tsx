@@ -31,11 +31,8 @@ const SP = ({ name, price }: iSellingPoint) => {
   return (
     <div className="w-full flex flex-col justify-between items-start">
       <div className="w-full flex flex-row justify-between items-center">
-        <span className={`${inter.className} text-3xl`}>{name}</span>
+        <span className={`${press_start.className} text-3xl`}>{name}</span>
         <div className="flex gap-2">
-          <span className={`${press_start.className} text-hack-green text-xl`}>
-            {price} грн
-          </span>
 
           <Image
             src="/cross.svg"
@@ -146,7 +143,7 @@ export default function Cart() {
               <h3
                 className={`${press_start.className} text-center text-hack-green text-xl`}
               >
-                Offers
+                Offer
               </h3>
               {sellingPoints.filter((sp) => sp.active).map((sp) => SP(sp))}
 

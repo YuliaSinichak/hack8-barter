@@ -12,7 +12,6 @@ import { press_start } from "@/app/fonts";
 
 import { Checkbox } from "@/components/ui/checkbox";
 
-//TODO: тут треба описати вибіркові пакети
 
 const explanation: dataItem[] = [
   {

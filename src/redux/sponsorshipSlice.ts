@@ -6,8 +6,8 @@ const sellingPoints: iSellingPoint[] = [
     {
         compulsory: true,
         active: true,
-        name: 'Пакет 1',
-        price: 'до 2000',
+        name: 'Пакет A',
+        price: 'Продукція на суму до 2000',
         annotation: '',
         services: [
             `Промоція в Instagram story`,
@@ -18,8 +18,8 @@ const sellingPoints: iSellingPoint[] = [
     {
         compulsory: true,
         active: false,
-        name: 'Пакет 2',
-        price: '2000-8000',
+        name: 'Пакет B',
+        price: 'Продукція на суму 2000-8000',
         annotation: "",
         services: [
             'Лого на бренд-воллі',
@@ -32,8 +32,8 @@ const sellingPoints: iSellingPoint[] = [
     {
         compulsory: true,
         active: false,
-        name: 'Пакет 3',
-        price: '8000+',
+        name: 'Пакет C',
+        price: 'Продукція на суму 8000+',
         annotation: '',
         services: [
             'Лого на бренд-воллі',
@@ -41,7 +41,7 @@ const sellingPoints: iSellingPoint[] = [
             `Згадка в постпроєктному відео`,
             `Транслювання відеоролика на місці події`,
             `Розміщення банеру на місці події`,
-            `Пост-дайджест у тґ`,
+            `Пост-дайджест у Telegram`,
             `Участь у нетворкінгу`,
         ]
     },

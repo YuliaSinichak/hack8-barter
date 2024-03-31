@@ -1,6 +1,6 @@
 export interface iSellingPoint {
   compulsory: boolean;
-  name: "Пакет 1" | "Пакет 2" | "Пакет 3";
+  name: "Пакет A" | "Пакет B" | "Пакет C";
   active: boolean;
   price: string;
   annotation: string;

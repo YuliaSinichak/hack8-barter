@@ -8,11 +8,11 @@ import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
 const explanation: {
-  'Пакет 1': dataItem[];
-  'Пакет 2': dataItem[];
-  'Пакет 3': dataItem[];
+  'Пакет A': dataItem[];
+  'Пакет B': dataItem[];
+  'Пакет C': dataItem[];
 } = {
-  'Пакет 1': [
+  'Пакет A': [
     {
       heading: "Промоція в Instagram story",
       details:
@@ -29,7 +29,7 @@ const explanation: {
         "Під час проведення змагань, буде розміщений банер Вашої компанії. Банер надається компанією.",
     },
   ],
-  'Пакет 2': [
+  'Пакет B': [
     {
       heading: "Лого на бренд-воллі",
       details:
@@ -56,7 +56,7 @@ const explanation: {
         "Під час проведення змагань, буде розміщений банер Вашої компанії. Банер надається компанією.",
     },
   ],
-  'Пакет 3': [
+  'Пакет C': [
     {
       heading: "Лого на бренд-воллі",
       details:
@@ -83,7 +83,7 @@ const explanation: {
         "Під час проведення змагань, буде розміщений банер Вашої компанії. Банер надається компанією.",
     },
     {
-      heading: "Пост-дайджест у тґ",
+      heading: "Пост-дайджест у Telegram",
       details:
         " ",
     },
@@ -129,20 +129,6 @@ const Card = ({
             {name}
           </h5>
           <button
-            className={`${press_start.className} ${
-              compulsory ? "cursor-auto" : "cursor-auto"
-            } text-md md:text-lg bg-black rounded-xl border-2 w-fit border-hack-green text-hack-green px-4 lg:px-6 py-2 self-center ml-5`}
-          >{`${price} грн`}</button>
-        </div>
-        <div className="w-full">
-          {services.map((s, index) => (
-            <li key={index} className={`${inter.className} text-md md:text-ld`}>
-              {s}
-            </li>
-          ))}
-        </div>
-        <div className="flex flex-row-reverse justify-between items-end md:gap-4 gap-1 z-20">
-          <button
             onClick={() => {
               handleModal({ name, modalData: explanation[name] as any });
             }}
@@ -155,11 +141,20 @@ const Card = ({
               className="md:w-12 w-8"
             />
           </button>
-          {annotation && (
-            <span className="text-gray-400 bg-black border border-gray-400 text-xs md:text-md md:py-3 py-1.5 md:px-4 px-2 rounded-lg h-fit">
-              {annotation}
-            </span>
-          )}
+        </div>
+        <div className="w-full">
+          {services.map((s, index) => (
+            <li key={index} className={`${inter.className} text-md md:text-ld`}>
+              {s}
+            </li>
+          ))}
+        </div>
+        <div className="flex flex-row-reverse justify-center items-center md:gap-4 gap-1 z-20">
+          <button
+            className={`${press_start.className} ${
+              compulsory ? "cursor-auto" : "cursor-auto"
+            } text-md md:text-md bg-black rounded-xl border-2 w-fit border-hack-green text-hack-green px-4 lg:px-6 py-2 self-center ml-5`}
+          >{`${price} грн`}</button>
         </div>
       </div>
     </div>
@@ -186,8 +181,7 @@ export default function Offers() {
       </h2>
       <div className="flex flex-col-reverse lg:flex-row-reverse gap-10 items-start">
       <div className="flex flex-col justify-center text-left lg:max-w-lg">
-        <h2 className={`${press_start.className} text-white text-xl`}>10% отриманих коштів підуть на допомогу ЗСУ</h2>
-        <p className={`${inter.className} text-gray-500 font-italic text-sm`}>*Оплата буде здійснюватися за курсом НБУ</p>
+        <p className={`${press_start.className} text-white text-xl`}>*Оплата буде здійснюватися за курсом НБУ</p>
         <p className={`${inter.className} text-gray-300 my-5`}>Кожен партнер проєкту має змогу долучитись до благодійного збору-розіграшу для ЗСУ в наших соціальних мережах. Серед людей, що задонатять, випадковим чином оберуться переможці, які отримають подарунки від компаній-партнерів.</p>
         <p className={`${inter.className} text-gray-300`}>Також після успішного завершення хакатону вам надається фото та відеозвіт від організаторів.</p>
       </div>
