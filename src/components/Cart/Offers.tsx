@@ -31,7 +31,7 @@ const explanation: {
   ],
   'Пакет B': [
     {
-      heading: "Лого на бренд-воллі",
+      heading: "Лого на бренд-волл",
       details:
         "Розміщення логотипа Вашої компанії на бренд - волл проєкту, який буде розміщено на сцені протягом усієї події.",
     },
@@ -58,7 +58,7 @@ const explanation: {
   ],
   'Пакет C': [
     {
-      heading: "Лого на бренд-воллі",
+      heading: "Лого на бренд-волл",
       details:
         "Розміщення логотипа Вашої компанії на бренд - волл проєкту, який буде розміщено на сцені протягом усієї події.",
     },
@@ -181,9 +181,8 @@ export default function Offers() {
       </h2>
       <div className="flex flex-col-reverse lg:flex-row-reverse gap-10 items-start">
       <div className="flex flex-col justify-center text-left lg:max-w-lg">
-        <p className={`${press_start.className} text-white text-xl`}>*Оплата буде здійснюватися за курсом НБУ</p>
+        <p className={`${press_start.className} text-white text-xl`}>Після успішного завершення хакатону вам надається фото та відеозвіт від організаторів.</p>
         <p className={`${inter.className} text-gray-300 my-5`}>Кожен партнер проєкту має змогу долучитись до благодійного збору-розіграшу для ЗСУ в наших соціальних мережах. Серед людей, що задонатять, випадковим чином оберуться переможці, які отримають подарунки від компаній-партнерів.</p>
-        <p className={`${inter.className} text-gray-300`}>Також після успішного завершення хакатону вам надається фото та відеозвіт від організаторів.</p>
       </div>
       <Image
           src="/Elipse.png"
